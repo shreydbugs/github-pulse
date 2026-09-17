@@ -2,11 +2,11 @@
   "name": "github-pulse-server",
   "version": "1.0.0",
   "description": "GitHub Pulse API Server",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node --watch index.js",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
     "test": "node --test"
   },
   "dependencies": {

@@ -2,8 +2,9 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
-import { setupRoutes } from "./routes.js";
-import { startPolling } from "./githubPoller.js";
+import { setupRoutes } from "./routes/pulseRoutes.js";
+import { startPolling } from "./repository/githubRepository.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
 
@@ -22,16 +23,7 @@ app.use(express.json());
 setupRoutes(app);
 
 // Global Error Handler
-app.use((err, req, res, next) => {
-  console.error("[Server Error]", err);
-  res.status(500).json({
-    error: "Internal Server Error",
-    message:
-      process.env.NODE_ENV === "development"
-        ? err.message
-        : "Something went wrong",
-  });
-});
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`[Server] GitHub Pulse API listening on port ${PORT}`);

@@ -1,4 +1,4 @@
-import { getPulseData, getHealth } from "./controllers.js";
+import { getPulseData, getHealth } from "../controllers/pulseController.js";
 
 export function setupRoutes(app) {
   app.get("/health", getHealth);
