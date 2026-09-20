@@ -35,6 +35,8 @@ jobs:
 
       - name: Build
         working-directory: client
+        env:
+          VITE_API_URL: https://github-pulse-production.up.railway.app
         run: npm run build
 
       - name: Setup Pages
@@ -46,5 +48,4 @@ jobs:
           path: client/dist
 
       - name: Deploy
-        id: deployment
         uses: actions/deploy-pages@v4
